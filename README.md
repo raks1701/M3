@@ -15,25 +15,16 @@ To write a program to prepare EMI calculator using function without return type 
 
 ## PROGRAM
 ```
-#include <stdio.h>
-#include <math.h>
-void calculateEMI(double principal, double rate, int months) {
-rate = rate / (12 * 100);
-double emi = (principal * rate * pow(1 + rate, months)) / (pow(1 +
-rate, months) - 1);
-printf("The EMI for the loan is: %.2f\n", emi);
-}
-int main() {
-double principal, rate;
-int months;
-scanf("%lf", &principal);
-printf("Enter the principal amount: %.lf\n",principal);
-scanf("%lf", &rate);
-printf("Enter the annual rate of interest: %.lf\n",rate);
-scanf("%d", &months);
-printf("Enter the number of months: %d\n",months);
-calculateEMI(principal, rate, months);
-return 0;
+#include<stdio.h>
+#include<math.h>
+int main()
+{
+    float p = 775000, R = 8.75, y = 10.6 * 12, emi, r, c;
+    r = R/(12*100);
+    c = pow((1+r),y);
+    emi = (p*c*r)/(c-1);
+    printf("Monthly EMI is= %.3f",emi);
+    return 0;
 }
 ```
 
@@ -43,7 +34,8 @@ return 0;
 
 
 
-![m-1 (2)](https://github.com/user-attachments/assets/2b142c50-c1e6-4bb2-98b8-97d297f774f6)
+![mc](https://github.com/user-attachments/assets/dbef0f90-439e-4e30-84ca-685413a6354d)
+
 
 ## RESULT
 
@@ -68,19 +60,21 @@ To write a C program to generate the Fibonacci series for the value 6.
 ## PROGRAM
 ```
 #include <stdio.h>
-int main()
-{
-int n = 6;
-int first = 0, second = 1, next;
-printf("Fibonacci Series: %d %d ", first, second);
-for (int i = 3; i <= n; i++) {
-next = first + second;
-printf("%d ", next);
-first = second;
-second = next;
-}
-printf("\n");
-return 0;
+int main() {
+    int n = 6; 
+    int a = 0, b = 1, next, i;
+
+    printf("Fibonacci series for %d terms:\n", n);
+
+    for (i = 1; i <= n; i++) {
+        printf("%d ", a);
+        next = a + b;
+        a = b;
+        b = next;
+    }
+
+    printf("\n");
+    return 0;
 }
 ```
 ## OUTPUT
@@ -113,20 +107,20 @@ To write a C program to read n elements as input and print the last element of t
 ## PROGRAM
 ```
 #include <stdio.h>
+
 int main() {
-int n;
-scanf("%d", &n);
-printf("Enter the number of elements: %d\n",n);
-int arr[n];
-printf("Enter %d elements:", n);
-for (int i = 0; i < n; i++) {
-scanf("%d ", &arr[i]);
-}
-for (int i = 0; i < n; i++) {
-printf("%d ", arr[i]);
-}
-printf("\nThe last element is: %d\n", arr[n - 1]);
-return 0;
+    int n, i;
+    printf("Enter the number of elements: ");
+    scanf("%d", &n);
+
+    int arr[n]; 
+    printf("Enter %d elements:\n", n);
+    for (i = 0; i < n; i++) {
+        scanf("%d", &arr[i]);
+    }
+    printf("The last element is: %d\n", arr[n - 1]);
+
+    return 0;
 }
 ```
 ## OUTPUT
@@ -160,23 +154,26 @@ To write a C Program to count total number of positive elements in an array.
 
 ## PROGRAM
 ```
+#include <stdio.h>
+
 int main() {
-int n, count = 0;
-scanf("%d", &n);
-printf("Enter the number of elements: %d\n",n);
-int arr[n];
-printf("Enter %d elements:", n);
-for (int i = 0; i < n; i++) {
-scanf("%d", &arr[i]);
-printf("%d ", arr[i]);
-}
-for (int i = 0; i < n; i++) {
-if (arr[i] > 0) {
-count++;
-}
-}
-printf("\nTotal number of positive elements: %d\n", count);
-return 0;
+    int n, i, count = 0;
+    printf("Enter the number of elements: ");
+    scanf("%d", &n);
+
+    int arr[n];
+    printf("Enter %d elements:\n", n);
+    for (i = 0; i < n; i++) {
+        scanf("%d", &arr[i]);
+    }
+    for (i = 0; i < n; i++) {
+        if (arr[i] > 0) {
+            count++;
+        }
+    }
+    printf("Total number of positive elements: %d\n", count);
+
+    return 0;
 }
 ```
 
@@ -217,35 +214,40 @@ To write a C program to replace all even elements with 'E' in one dimensional ar
 ## Program:
 ```
 #include <stdio.h>
+
 int main() {
-int n;
-scanf("%d", &n);
-printf("Enter the size of the array: %d\n",n);
-int arr[n];
-printf("Enter %d elements:", n);
-for (int i = 0; i < n; i++) {
-scanf("%d", &arr[i]);
-printf("%d ", arr[i]);
-}
-for (int i = 0; i < n; i++) {
-if (arr[i] % 2 == 0) {
-arr[i] = 'E';
-}
-}
-printf("\nUpdated array:");
-for (int i = 0; i < n; i++) {
-if (arr[i] == 'E') {
-printf("E ");
-} else {
-printf("%d ", arr[i]);
-}
-}
-return 0;
+    int n, i;
+    printf("Enter the number of elements: ");
+    scanf("%d", &n);
+
+    int arr[n];        
+    char output[n];   
+    printf("Enter %d elements:\n", n);
+    for (i = 0; i < n; i++) {
+        scanf("%d", &arr[i]);
+        if (arr[i] % 2 == 0) {
+            output[i] = 'E';
+        } else {
+            output[i] = arr[i];
+        }
+    }
+    printf("Modified array:\n");
+    for (i = 0; i < n; i++) {
+        if (output[i] == 'E') {
+            printf("E ");
+        } else {
+            printf("%d ", arr[i]);
+        }
+    }
+
+    printf("\n");
+    return 0;
 }
 ```
 ## Output:
  
-![m-5 (3)](https://github.com/user-attachments/assets/2f6b4ddf-bd0d-4c7a-b588-ea3a65554506)
+![m-5 (7)](https://github.com/user-attachments/assets/412cec60-c52c-4e8e-97cf-640aeb83dae1)
+
 
 ## Result:
 
